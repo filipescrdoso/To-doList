@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+    --color1: white;
+    --color2: #e6e6e6;
+    --color3: #eeeeee;
+    --color4: black;
+    --color5: #0084FF;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background-color: var(--color1);
+}
+
+.nav-bar {
+    background-color: var(--color2);
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, .3);
+    height: 50px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.menu {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 45px;
+    position: absolute;
+    height: 100%;
+    width: 200px;
+    background-color: var(--color2);
+    box-shadow: 1.5px 0px 5px 0px rgba(0, 0, 0, .3);
+    padding: 55px 15px;
+    margin: -20px;
+    font-size: 20px;
+}
+
+.menu-button {
+    width: 60px;
+    height: 60px;
+    font-size: 50px;
+    position: relative;
+}
+
+@media (min-width: 700px) {
+    .nav-bar {
+        display: flex;
+        padding: 15px;
+        height: 45px;
+    }
+
+    .menu {
+        position: static;
+        padding: 25px;
+        display: flex;
+        flex-direction: row;
+        gap: 45px;
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        font-size: 15px;
+    }
+    
+    .menu-button {
+        display: none;
+    }
+}
+
