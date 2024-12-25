@@ -7,15 +7,17 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="./styles/style.css">
 </head>
-<body>
-    <div class="nav-bar" id="nav-bar">
+<body id="body">
+    <nav class="nav-bar" id="nav-bar">
+        <div class="nav-overlay" onclick="toggleElements('nav-bar', 'visible')"></div>
         <span class="menu" id="menu">
-            <a href="#">See on GitHub <i class='bx bxl-github'></i></a>
+            <a href="https://github.com/filipescrdoso/To-doList" target="_blank">See on GitHub <i class='bx bxl-github'></i></a>
             <a href="#">Configurations <i class='bx bx-cog'></i></a>
             <a href="#">About Us <i class='bx bxs-cat'></i></a>
         </span>
-        <button class="menu-button" id="menu-button"><i class='bx bx-menu'></i></button>
-    </div>
+        <button class="menu-button" id="menu-button" onclick="toggleElements('nav-bar', 'visible')"><i class='bx bx-menu'></i></button>
+        <input type="checkbox" onclick="toggleElements('body', 'dark-mode')">
+    </nav>
 
     <h1>To-do List</h1>
 
@@ -23,34 +25,38 @@
 
         <!-- Container for the pendent tasks -->
         <div class="pendent-tasks-container">
-            <div>
+            <div class="inner-div">
                 <h2>Pendent tasks:</h2>
-                <button class="hide-pendent"><i class='bx bx-chevron-down'></i></button>
+                <button class="hide-pendent" onclick="toggleElements('pendent-tasks', 'active')"><i class='bx bx-chevron-down'></i></button>
             </div>
 
-            <div class="pendent-tasks">
+            <div class="pendent-tasks" id="pendent-tasks">
                 <!-- Task model -->
                 <div class="task">
                     <li>Example of task</li>
-                    <button class="delete"><i class='bx bx-trash'></i></button>
-                    <input type="checkbox">
+                    <span class="task-buttons">
+                        <button class="delete"><i class='bx bx-trash'></i></button>
+                        <input type="checkbox">
+                    </span>
                 </div>
             </div>
         </div>
 
         <!-- Container for the completed tasks -->
         <div class="completed-tasks-container">
-            <div>
+            <div class="inner-div">
                 <h2>Completed tasks:</h2>
-                <button class="hide-pendent"><i class='bx bx-chevron-down'></i></button>
+                <button class="hide-pendent" onclick="toggleElements('completed-tasks', 'active')"><i class='bx bx-chevron-down'></i></button>
             </div>
 
-            <div class="pendent-tasks">
+            <div class="pendent-tasks" id="completed-tasks">
                 <!-- Task model -->
                 <div class="task">
                     <li>Example of task</li>
-                    <button class="delete"><i class='bx bx-trash'></i></button>
-                    <input type="checkbox" checked>
+                    <span class="task-buttons">
+                        <button class="delete"><i class='bx bx-trash'></i></button>
+                        <input type="checkbox">
+                    </span>
                 </div>
             </div>
         </div>
