@@ -24,14 +24,15 @@
     <div class="tasks-general-container">
 
         <!-- Container for the pendent tasks -->
-        <div class="pendent-tasks-container">
+        <div class="pendent-tasks-container" id="pendent-tasks-container">
             <div class="inner-div">
                 <h2>Pendent tasks:</h2>
-                <button class="hide-pendent" onclick="toggleElements('pendent-tasks', 'active')"><i class='bx bx-chevron-down'></i></button>
+                <button class="hide-pendent" onclick="toggleElements('pendent-tasks-container', 'deactivated')"><i class='bx bx-chevron-down'></i></button>
             </div>
 
-            <div class="pendent-tasks" id="pendent-tasks">
+            <div class="pendent-tasks">
                 <!-- Task model -->
+
                 <div class="task">
                     <li>Example of task</li>
                     <span class="task-buttons">
@@ -40,17 +41,20 @@
                     </span>
                 </div>
             </div>
+
+            
         </div>
 
         <!-- Container for the completed tasks -->
-        <div class="completed-tasks-container">
+        <div class="completed-tasks-container" id="completed-tasks-container">
             <div class="inner-div">
                 <h2>Completed tasks:</h2>
-                <button class="hide-pendent" onclick="toggleElements('completed-tasks', 'active')"><i class='bx bx-chevron-down'></i></button>
+                <button class="hide-completed" onclick="toggleElements('completed-tasks-container', 'deactivated')"><i class='bx bx-chevron-down'></i></button>
             </div>
 
-            <div class="pendent-tasks" id="completed-tasks">
+            <div class="completed-tasks">
                 <!-- Task model -->
+
                 <div class="task">
                     <li>Example of task</li>
                     <span class="task-buttons">
@@ -58,20 +62,25 @@
                         <input type="checkbox">
                     </span>
                 </div>
+                
             </div>
         </div>
 
     </div>
 
-    <button>Add task +</button>
-
-    <div class="create-task-panel">
-        <h3>Add new task:</h3>
-        <form>
-            <label for="create-input">Describe your task:</label>
-            <input type="text" placeholder="Wash the dishes..." id="create-input" name="create-input">
-            <input type="submit" value="add task +">
-        </form>
+    <button class="add-button" onclick="toggleElements('create-task-panel', 'visible')">Add task +</button>
+    
+    <div class="create-task-panel" id="create-task-panel">
+        <div class="nav-overlay create-panel" onclick="toggleElements('create-task-panel', 'visible')"></div>
+        
+        <div class="panel">
+            <h3>Add new task:</h3>
+            <form>
+                <label for="create-input">Describe your task:</label>
+                <input type="text" placeholder="Wash the dishes..." id="create-input" name="create-input">
+                <input type="submit" value="add task +">
+            </form>
+        </div>
     </div>
     
 

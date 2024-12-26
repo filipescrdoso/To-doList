@@ -3,10 +3,11 @@
 
 :root {
     --color1: white;
-    --color2: #e6e6e6;
+    --color2: #cfcfcf;
     --color3: #eeeeee;
     --color4: black;
     --color5: #0084FF;
+    --color6: #A4A4A4;
     --button-shadow: rgba(0, 0, 0, .1);
 }
 
@@ -24,8 +25,13 @@
     font-family: "Inter", sans-serif;
 }
 
+html, body {
+    min-height: 100%;
+}
 body {
-    background-color: var(--color1);
+    background-color: var(--color3);
+    padding: 0;
+    margin: 0;
 }
 
 .nav-bar {
@@ -91,6 +97,7 @@ body {
     height: 60px;
     font-size: 50px;
     position: relative;
+    cursor: pointer;
 }
 
 a {
@@ -135,7 +142,8 @@ h1 {
     font-size: 40px;
     letter-spacing: -1.5px;
     margin-bottom: 20px;
-    justify-self: center;
+    width: 100%;
+    text-align: center;
     color: var(--color4);
 }
 
@@ -152,6 +160,7 @@ h1 {
     box-shadow: 0px 0px 5px 1px var(--button-shadow);
     margin-bottom: 10px;
     padding: 0px 20px;
+    transition: height 1s;
 }
 
 .inner-div {
@@ -165,10 +174,24 @@ h1 {
     height: 30px;
     border-radius: 45px;
     border: none;
+    transition: scale .3s, box-shadow .3s, rotate ease .3s;
+    background-color: var(--color3);
+    rotate: 180deg;
+}
+
+.inner-div > button:hover {
+    scale: 1.1;
+    cursor: pointer;
+    box-shadow: 0px 0px 3px 1px var(--button-shadow);
+}
+
+.inner-div > button:active {
+    scale: .95;
 }
 
 .inner-div > button > i {
     font-size: 30px;
+    color: var(--color4);
 }
 
 h2 {
@@ -184,8 +207,18 @@ h2 {
     gap: 10px;
 }
 
-.pendent-tasks.active .task, .completed-tasks.active .task  {
+.pendent-tasks-container.deactivated .pendent-tasks .task, 
+.completed-tasks-container.deactivated .completed-tasks .task  {
     display: none;
+}
+
+.pendent-tasks-container.deactivated .inner-div .hide-pendent,
+.completed-tasks-container.deactivated .inner-div .hide-completed {
+    rotate: 360deg;
+}
+
+.completed-tasks-container {
+    margin-bottom: 100px;
 }
 
 .task {
@@ -212,6 +245,104 @@ h2 {
     color: var(--color4);
 }
 
+.task span{
+    display: flex;
+    gap: 7px;
+}
+
+.task span input {
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--color6);
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.task span input[type="checkbox"]:hover {
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, .3) inset;
+}
+
+.task span input[type="checkbox"]:checked::after {
+    content: "✓";
+    color: var(--color6);
+    display: block;
+    position: relative;
+    transform: translate(8%, -19%);
+    font-size: 37px;
+    font-weight: 1000;
+    line-height: 30px;
+}
+
+.delete {
+    width: 30px;
+    height: 30px;
+    border: none;
+    font-size: 30px;
+    display: flex;
+    opacity: 0;
+    color: var(--color6);
+    align-items: center;
+    justify-content: center;
+    transition: all ease-out .3s;
+    background-color: var(--color3);
+}
+
+.task:hover .delete {
+    opacity: 1;
+}
+
+.delete:hover {
+    color: rgb(255, 47, 47);
+    cursor: pointer;
+}
+
+.add-button {
+    background-color: var(--color5);
+    color: white;
+    height: 50px;
+    width: 150px;
+    border: none;
+    font-size: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 2px 3px 1px var(--button-shadow);
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.create-task-panel {
+    display: none;
+}
+
+.create-task-panel.visible {
+    display: block;
+}
+
+.nav-overlay.create-panel {
+    z-index: 1;
+    transition: all .3s;
+}
+
+.create-task-panel.visible .nav-overlay.create-panel {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1;
+}
+
+.panel {
+    z-index: 2;
+    background-color: var(--color1);
+    border-radius: 25px;
+    box-shadow: 0px 1px 5px 1px var(--button-shadow);
+    position: fixed;
+}
+
 @media only screen and (min-width: 700px) {
     .nav-bar {
         display: flex;
@@ -219,11 +350,8 @@ h2 {
         height: 45px;
     }
 
-    .nav-overlay {
-        display: none;
-    }
-
     .menu {
+        z-index: 0;
         position: static;
         padding: 25px 5px;
         display: flex;
