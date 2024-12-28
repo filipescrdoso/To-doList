@@ -63,13 +63,20 @@ function generateTask(description) {
     taskDiv.appendChild(taskLi);
 
     const divSpan = createElement("span", "task-buttons");
-    const spanButton = createElement("button", "delete", "<i class='bx bx-trash'></i>");
-    divSpan.appendChild(spanButton);
-    const spanInput = createElement("input");
-    spanInput.type = "checkbox";
-    divSpan.appendChild(spanInput);
-
+    const spanDeleteButton = createElement("button", "delete", "<i class='bx bx-trash'></i>");
+    divSpan.appendChild(spanDeleteButton);
+    const spanCheckInput = createElement("input");
+    spanCheckInput.type = "checkbox";
+    divSpan.appendChild(spanCheckInput);
     taskDiv.appendChild(divSpan);
+
+    spanDeleteButton.addEventListener('click', () => {
+        //function added to delete THIS task when the delete button is pressed
+        deleteTaskLocal(taskDiv.children[0].innerText, taskDiv);
+    })
+    // spanCheckInput.addEventListener('click', () => {
+    //     checkTask(taskDiv.children[0].innerText, taskDiv)
+    // })
 
     return taskDiv;
 }
@@ -89,6 +96,20 @@ function createTaskObj() {
     return newTask;
 }
 
+// function checkTask(description, taskDiv) {
+
+//     if(localStorage.getItem("tasks") !== null) {
+//         let tasks = JSON.parse(localStorage.getItem("tasks"));
+        
+//         tasks.forEach(task => {
+//             if(task.description === description) {
+                
+//             }
+//         });
+//     }
+
+// }
+
 function saveTaskLocal(newTask) {
 //saves the new task in local storage
 
@@ -104,20 +125,22 @@ function saveTaskLocal(newTask) {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-/*function deleteTaskLocal({ description }) {
+function deleteTaskLocal(description, taskElement) {
+//deletes the tasks from localStorage
+
     if(localStorage.getItem("tasks") !== null) {
         let tasks = JSON.parse(localStorage.getItem("tasks"));
         
-        tasks.forEach(task => {
-            if(task.description === description) {
-                console.log(task)
-            }
-        });
+        let newTasks = tasks.filter(desc => desc.description != description)
         
+        localStorage.setItem("tasks", JSON.stringify(newTasks));
+        taskElement.remove();
     }
-}*/
+}
 
 function createElement(tagName, className, innerHtml) {
+//creates the HTML elements
+
     const newEl = document.createElement(tagName);
     if(className != '') {
         newEl.classList.add(className);
