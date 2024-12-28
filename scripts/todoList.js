@@ -7,25 +7,28 @@ addButton.addEventListener('click', addTask);
 document.addEventListener('DOMContentLoaded', getAllTasks);
 
 function addTask(event) {
-//actually creates a task when a new task is subimetted
+//function that actually adds the whole task to the screen when a new one is submitted by the input
 
     event.preventDefault();
     const warning = document.getElementById("warning");
     let error = false;
     let localTasks;
 
-    if(localStorage.getItem("tasks") !== null) {
+    if(localStorage.getItem("tasks") != null) {
+    //prevents the user from creating a task with the same description, which could cause inconvenient errors
         localTasks = JSON.parse(localStorage.getItem("tasks"));
+
+        localTasks.forEach(task => {
+            if(addInput.value == task.description) {
+                warning.innerText = "A task with this description already exists!"
+                warning.style.display = "block";
+                error = true;
+            }
+        })
     }
 
-    localTasks.forEach(task => {
-        if(addInput.value == task.description) {
-            warning.innerText = "A task with this description already exists!"
-            warning.style.display = "block";
-            error = true;
-        }
-    })
     if(addInput.value == "") {
+    //prevents to add a task without description
         warning.innerText = "This field cannot be empty!"
         warning.style.display = "block";
         error = true;
@@ -69,9 +72,9 @@ function generateTask(description) {
 //creates the HTML elements that will be displayed on the page, this function is called by "buildTask()"
 
     const taskDiv = createElement("div", "task");
-    const taskLi = createElement("li");
-    taskLi.innerText = description;
-    taskDiv.appendChild(taskLi);
+    const taskParagraph = createElement("p");
+    taskParagraph.innerText = description;
+    taskDiv.appendChild(taskParagraph);
 
     const divSpan = createElement("span", "task-buttons");
     const spanDeleteButton = createElement("button", "delete", "<i class='bx bx-trash'></i>");
@@ -108,6 +111,7 @@ function createTaskObj() {
 }
 
 function checkTask(description, taskElement) {
+//checks and updates the status from a tasks in localStorage
 
     if(localStorage.getItem("tasks") !== null) {
         let tasks = JSON.parse(localStorage.getItem("tasks"));
@@ -128,7 +132,7 @@ function checkTask(description, taskElement) {
 }
 
 function saveTaskLocal(newTask) {
-//saves the new task in local storage
+//saves a new task in localStorage
 
     let tasks;
     if(localStorage.getItem("tasks") === null) {
@@ -143,7 +147,7 @@ function saveTaskLocal(newTask) {
 }
 
 function deleteTaskLocal(description, taskElement) {
-//deletes the tasks from localStorage
+//deletes a tasks from localStorage
 
     if(localStorage.getItem("tasks") !== null) {
         let tasks = JSON.parse(localStorage.getItem("tasks"));
