@@ -36,7 +36,6 @@ function getAllTasks() {
 
         tasks.forEach(task => {
             buildTasks(task);
-            console.log(task);
         });
     }
 }
@@ -104,6 +103,19 @@ function saveTaskLocal(newTask) {
     tasks.push(newTask);
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
+
+/*function deleteTaskLocal({ description }) {
+    if(localStorage.getItem("tasks") !== null) {
+        let tasks = JSON.parse(localStorage.getItem("tasks"));
+        
+        tasks.forEach(task => {
+            if(task.description === description) {
+                console.log(task)
+            }
+        });
+        
+    }
+}*/
 
 function createElement(tagName, className, innerHtml) {
     const newEl = document.createElement(tagName);
