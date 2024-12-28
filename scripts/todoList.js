@@ -74,9 +74,9 @@ function generateTask(description) {
         //function added to delete THIS task when the delete button is pressed
         deleteTaskLocal(taskDiv.children[0].innerText, taskDiv);
     })
-    // spanCheckInput.addEventListener('click', () => {
-    //     checkTask(taskDiv.children[0].innerText, taskDiv)
-    // })
+    spanCheckInput.addEventListener('click', () => {
+        checkTask(taskDiv.children[0].innerText, taskDiv)
+    })
 
     return taskDiv;
 }
@@ -96,19 +96,25 @@ function createTaskObj() {
     return newTask;
 }
 
-// function checkTask(description, taskDiv) {
+function checkTask(description, taskElement) {
 
-//     if(localStorage.getItem("tasks") !== null) {
-//         let tasks = JSON.parse(localStorage.getItem("tasks"));
+    if(localStorage.getItem("tasks") !== null) {
+        let tasks = JSON.parse(localStorage.getItem("tasks"));
         
-//         tasks.forEach(task => {
-//             if(task.description === description) {
-                
-//             }
-//         });
-//     }
+        let newTask;
+        tasks.forEach(task => {
+            if(task.description === description) {
+                newTask = task;
+                newTask.status = task.status === "pendent" ? "completed" : "pendent";
+            }
+        });
 
-// }
+        deleteTaskLocal(description, taskElement);
+        saveTaskLocal(newTask);
+        buildTasks(newTask);
+    }
+
+}
 
 function saveTaskLocal(newTask) {
 //saves the new task in local storage
