@@ -16,7 +16,6 @@
             <a href="#">About Us <i class='bx bxs-cat'></i></a>
         </span>
         <button class="menu-button" id="menu-button" onclick="toggleElements('nav-bar', 'visible')"><i class='bx bx-menu'></i></button>
-        <!-- <input type="checkbox" onclick="toggleElements('body', 'dark-mode')"> -->
     </nav>
 
     <h1>To-do List</h1>
@@ -30,7 +29,7 @@
                 <button class="hide-pendent" onclick="toggleElements('pendent-tasks-container', 'deactivated')"><i class='bx bx-chevron-down'></i></button>
             </div>
 
-            <div class="pendent-tasks">
+            <div class="pendent-tasks" id="pendentTasks">
                 <!-- Task model -->
 
                 <div class="task">
@@ -52,7 +51,7 @@
                 <button class="hide-completed" onclick="toggleElements('completed-tasks-container', 'deactivated')"><i class='bx bx-chevron-down'></i></button>
             </div>
 
-            <div class="completed-tasks">
+            <div class="completed-tasks" id="completedTasks">
                 <!-- Task model -->
 
                 <div class="task">
@@ -75,15 +74,17 @@
         
         <div class="panel">
             <h3>Add new task:</h3>
-            <form>
+            <form name="form">
                 <label for="create-input">Describe your task:</label>
                 <input type="text" placeholder="Wash the dishes..." id="create-input" name="create-input">
-                <input type="submit" value="add task +">
+                <p id="warning">This field cannot be empty!</p>
+                <input type="submit" value="add task +" id="addButton">
             </form>
         </div>
     </div>
     
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/todoList.js"></script>
 </body>
 </html>

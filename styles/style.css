@@ -44,7 +44,6 @@ body {
     background-color: var(--color2);
     box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, .3);
     height: 50px;
-    width: 100%;
     padding: 15px;
     display: flex;
     align-items: center;
@@ -396,13 +395,19 @@ h2 {
 
 .panel > form > #create-input {
     height: 40px;
-    margin: 7px 0px;
+    margin: 7px 0px 0px 0px;
     border: 3px solid var(--color6);
     outline: none;
     border-radius: 10px;
     padding: 0px 5px;
     font-size: 17px;
     font-weight: 500;
+}
+
+#warning {
+    font-size: 15px;
+    color: red;
+    display: none;
 }
 
 .panel > form > input[type=submit] {
