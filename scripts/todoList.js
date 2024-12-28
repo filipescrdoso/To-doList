@@ -3,24 +3,35 @@ const completedTasksBox = document.getElementById("completedTasks");
 const addButton = document.getElementById("addButton");
 const addInput = document.getElementById("create-input");
 
-let lorem = "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
-let taskObjModel = {
-    description: lorem,
-    status: null
-};
-
 addButton.addEventListener('click', addTask);
 document.addEventListener('DOMContentLoaded', getAllTasks);
 
 function addTask(event) {
-//actually creates a task when a new task
+//actually creates a task when a new task is subimetted
 
     event.preventDefault();
-    
+    const warning = document.getElementById("warning");
+    let error = false;
+    let localTasks;
+
+    if(localStorage.getItem("tasks") !== null) {
+        localTasks = JSON.parse(localStorage.getItem("tasks"));
+    }
+
+    localTasks.forEach(task => {
+        if(addInput.value == task.description) {
+            warning.innerText = "A task with this description already exists!"
+            warning.style.display = "block";
+            error = true;
+        }
+    })
     if(addInput.value == "") {
-        const warning = document.getElementById("warning");
+        warning.innerText = "This field cannot be empty!"
         warning.style.display = "block";
-    } else {
+        error = true;
+    }
+
+    if(error !== true) {
         const newTask = createTaskObj();
         warning.style.display = "none";
         buildTasks(newTask);

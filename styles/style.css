@@ -43,7 +43,7 @@ body {
 .nav-bar {
     background-color: var(--color2);
     box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, .3);
-    height: 50px;
+    height: 40px;
     padding: 15px;
     display: flex;
     align-items: center;
@@ -160,7 +160,7 @@ h1 {
 }
 
 .pendent-tasks-container, .completed-tasks-container {
-    width: clamp(320px, 80%, 800px);
+    width: clamp(200px, 70%, 800px);
     background-color: var(--color1);
     border-radius: 30px;
     box-shadow: 0px 0px 5px 1px var(--button-shadow);
@@ -251,6 +251,11 @@ h2 {
     color: var(--color4);
 }
 
+.task.completed > li {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
 .task span{
     display: flex;
     gap: 7px;
@@ -271,7 +276,7 @@ h2 {
     box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, .2) inset;
 }
 
-.task span input[type="checkbox"]:checked::after {
+.task.completed span input[type="checkbox"]::after {
     content: "✓";
     color: var(--color6);
     display: block;
