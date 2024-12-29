@@ -12,8 +12,8 @@
         <div class="nav-overlay" onclick="toggleElements('nav-bar', 'visible')"></div>
         <span class="menu" id="menu">
             <a href="https://github.com/filipescrdoso/To-doList" target="_blank">See on GitHub <i class='bx bxl-github'></i></a>
-            <a href="#">Configurations <i class='bx bx-cog'></i></a>
-            <a href="#">About Us <i class='bx bxs-cat'></i></a>
+            <a onclick="toggleElements('config-panel', 'visible'), toggleElements('nav-bar', 'visible', true)">Configurations <i class='bx bx-cog'></i></a>
+            <a onclick="toggleElements('aboutUs-panel', 'visible'), toggleElements('nav-bar', 'visible', true)">About Us <i class='bx bxs-cat'></i></a>
         </span>
         <button class="menu-button" id="menu-button" onclick="toggleElements('nav-bar', 'visible')"><i class='bx bx-menu'></i></button>
     </nav>
@@ -25,20 +25,24 @@
         <!-- Container for the pendent tasks -->
         <div class="pendent-tasks-container" id="pendent-tasks-container">
             <div class="inner-div">
-                <h2>Pendent tasks:</h2>
+                <h2 onclick="toggleElements('pendent-tasks-container', 'deactivated')">Pendent tasks:</h2>
                 <button class="hide-pendent" onclick="toggleElements('pendent-tasks-container', 'deactivated')"><i class='bx bx-chevron-down'></i></button>
             </div>
 
             <div class="pendent-tasks" id="pendentTasks">
+                <div class="task" id="empty-tasks" style="display: none;">
+                    <h4>You have no pending tasks! :D</h4>
+                    <p>Start creating responsibilities now by pressing the button below! ;) <span>(it's actually, quite intuitive)</span></p>
+                </div>
             </div>
 
             
         </div>
 
         <!-- Container for the completed tasks -->
-        <div class="completed-tasks-container" id="completed-tasks-container">
+        <div class="completed-tasks-container deactivated" id="completed-tasks-container">
             <div class="inner-div">
-                <h2>Completed tasks:</h2>
+                <h2 onclick="toggleElements('completed-tasks-container', 'deactivated')">Completed tasks:</h2>
                 <button class="hide-completed" onclick="toggleElements('completed-tasks-container', 'deactivated')"><i class='bx bx-chevron-down'></i></button>
             </div>
 
@@ -51,7 +55,6 @@
                         <input type="checkbox">
                     </span>
                 </div> -->
-                
             </div>
         </div>
 
@@ -70,6 +73,26 @@
                 <p id="warning">Error!</p>
                 <input type="submit" value="add task +" id="addButton">
             </form>
+        </div>
+    </div>
+    
+    <!-- Configurations -->
+    <div class="config-panel" id="config-panel">
+        <div class="nav-overlay config-panel" onclick="toggleElements('config-panel', 'visible')"></div>
+
+        <div class="panel">
+            <h3>Configurations:</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente iste, tempora hic dolor voluptatum ipsam fugit sint odit. Optio ut dolor porro id quaerat molestias at minus voluptates fuga neque!</p>
+        </div>
+    </div>
+
+    <!-- About Us -->
+    <div class="aboutUs-panel" id="aboutUs-panel">
+        <div class="nav-overlay aboutUs-panel" onclick="toggleElements('aboutUs-panel', 'visible')"></div>
+
+        <div class="panel">
+            <h3>About Us:</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem architecto, reprehenderit corrupti asperiores praesentium assumenda nesciunt reiciendis sequi. Placeat asperiores non eligendi, corporis animi enim consequatur temporibus vero adipisci soluta?</p>
         </div>
     </div>
     

@@ -15,10 +15,10 @@ function addTask(event) {
     let localTasks;
 
     if(localStorage.getItem("tasks") != null) {
-    //prevents the user from creating a task with the same description, which could cause inconvenient errors
         localTasks = JSON.parse(localStorage.getItem("tasks"));
-
+        
         localTasks.forEach(task => {
+            //prevents the user from creating a task with the same description, which could cause inconvenient errors
             if(addInput.value == task.description) {
                 warning.innerText = "A task with this description already exists!"
                 warning.style.display = "block";

@@ -116,6 +116,7 @@ a {
     transition: box-shadow ease 0.5s;
     position: relative;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 a > i {
@@ -160,7 +161,7 @@ h1 {
 }
 
 .pendent-tasks-container, .completed-tasks-container {
-    width: clamp(230px, 70%, 800px);
+    width: clamp(230px, 75%, 800px);
     background-color: var(--color1);
     border-radius: 30px;
     box-shadow: 0px 0px 5px 1px var(--button-shadow);
@@ -173,6 +174,7 @@ h1 {
     padding: 15px 0px;
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 .inner-div > button {
@@ -307,8 +309,9 @@ h2 {
     background-color: var(--color3);
 }
 
-.task:hover .delete {
+.task:hover .delete, body.mob .delete{
     opacity: 1;
+    scale: 0.9;
 }
 
 .delete:hover {
@@ -353,14 +356,18 @@ h2 {
     color: var(--color4);
 }
 
-.create-task-panel.visible .panel {
+.create-task-panel.visible .panel,
+.config-panel.visible .panel,
+.aboutUs-panel.visible .panel {
     opacity: 1;
     visibility: visible;
     transform: scale(100%, 100%);
 
 }
 
-.create-task-panel.visible .nav-overlay.create-panel {
+.create-task-panel.visible .nav-overlay.create-panel,
+.config-panel.visible .nav-overlay.config-panel,
+.aboutUs-panel.visible .nav-overlay.aboutUs-panel {
     visibility: visible;
     opacity: 1;
 }
@@ -385,6 +392,12 @@ h2 {
     padding: 25px;
     gap: 30px;
     align-items: center;
+}
+
+.config-panel .panel,
+.aboutUs-panel .panel {
+    width: clamp(230px, 60%, 750px);
+    height: auto;
 }
 
 .panel > h3 {
@@ -447,6 +460,29 @@ h2 {
 .panel > form > input[type=submit]:active {
     background-color: #58afff;
 }
+
+.task#empty-tasks {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 30px 15px;
+}
+.task#empty-tasks h4 {
+    color: var(--color5);
+    font-size: 20px;
+}
+.task#empty-tasks p {
+    font-weight: 450;
+}
+.task#empty-tasks span {
+    font-weight: 300;
+    font-size: 17px;
+}
+.pendent-tasks-container.deactivated .task#empty-tasks {
+    display: none;
+}
+
 
 @media only screen and (min-width: 700px) {
     .nav-bar {
