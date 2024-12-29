@@ -177,7 +177,29 @@ h1 {
     cursor: pointer;
 }
 
-.inner-div > button {
+.inner-div > span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.inner-div > span > p {
+    min-width: 20px;
+    height: 30px;
+    padding: 0px 5px;
+    border-radius: 45px;
+    border: none;
+    background-color: var(--color3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 20px;
+    box-shadow: 0px 0px 5px 2px var(--button-shadow) inset;
+}
+
+.inner-div button {
     width: 30px;
     height: 30px;
     border-radius: 45px;
@@ -187,17 +209,17 @@ h1 {
     rotate: 180deg;
 }
 
-.inner-div > button:hover {
+.inner-div button:hover {
     scale: 1.1;
     cursor: pointer;
     box-shadow: 0px 0px 3px 1px var(--button-shadow);
 }
 
-.inner-div > button:active {
+.inner-div button:active {
     scale: .95;
 }
 
-.inner-div > button > i {
+.inner-div button > i {
     font-size: 30px;
     color: var(--color4);
 }
@@ -479,8 +501,11 @@ h2 {
     font-weight: 300;
     font-size: 17px;
 }
-.pendent-tasks-container.deactivated .task#empty-tasks {
-    display: none;
+.pendent-tasks-container.deactivated #empty-tasks {
+    clip-path: inset(100%);
+    position: absolute;
+    width: 0%;
+    height: 0%;
 }
 
 

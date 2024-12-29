@@ -1,9 +1,9 @@
-document.getElementById("completed-tasks-container").addEventListener('click', showBanners);
-document.getElementById("pendent-tasks-container").addEventListener('click', showBanners);
+document.getElementById("completed-tasks-container").addEventListener('click', showBannersAndCounter);
+document.getElementById("pendent-tasks-container").addEventListener('click', showBannersAndCounter);
 document.getElementById("addButton").addEventListener('click', () => {
     setTimeout(function() {
         console.log("ok");
-        showBanners();
+        showBannersAndCounter();
     }, 100);
 
 });
@@ -15,23 +15,33 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.remove("mob")
     }
 
-    showBanners();
+    showBannersAndCounter();
 })
 
-function showBanners() {
+
+
+function showBannersAndCounter() {
     let show = true;
     const pendentBanner = document.getElementById("empty-tasks");
 
+    let totalPendent, totalCompleted;
+
     if(localStorage.getItem("tasks") != null) {
         localTasks = JSON.parse(localStorage.getItem("tasks"));
+
+        totalPendent = 0;
+        totalCompleted = 0;
         
         localTasks.forEach(task => {
             if(task.status == "pendent" || task.status == null) {
                 show = false;
+                totalPendent++;
+            } else {
+                totalCompleted++;
             }
         })
-        console.log(show)
-
+        document.getElementById("paragraphPendent").innerText = totalPendent;
+        document.getElementById("paragraphCompleted").innerText = totalCompleted;
     } 
 
     if(show == false) {

@@ -26,7 +26,10 @@
         <div class="pendent-tasks-container" id="pendent-tasks-container">
             <div class="inner-div">
                 <h2 onclick="toggleElements('pendent-tasks-container', 'deactivated')">Pendent tasks:</h2>
-                <button class="hide-pendent" onclick="toggleElements('pendent-tasks-container', 'deactivated')"><i class='bx bx-chevron-down'></i></button>
+                <span>
+                    <p id="paragraphPendent">0</p>
+                    <button class="hide-pendent" onclick="toggleElements('pendent-tasks-container', 'deactivated')"><i class='bx bx-chevron-down'></i></button>
+                </span>
             </div>
 
             <div class="pendent-tasks" id="pendentTasks">
@@ -43,7 +46,10 @@
         <div class="completed-tasks-container deactivated" id="completed-tasks-container">
             <div class="inner-div">
                 <h2 onclick="toggleElements('completed-tasks-container', 'deactivated')">Completed tasks:</h2>
-                <button class="hide-completed" onclick="toggleElements('completed-tasks-container', 'deactivated')"><i class='bx bx-chevron-down'></i></button>
+                <span>
+                    <p id="paragraphCompleted">0</p>
+                    <button class="hide-completed" onclick="toggleElements('completed-tasks-container', 'deactivated')"><i class='bx bx-chevron-down'></i></button>
+                </span>
             </div>
 
             <div class="completed-tasks" id="completedTasks">
